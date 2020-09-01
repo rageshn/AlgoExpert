@@ -19,7 +19,6 @@ You can assume that there will be at most one pair of number summing up to the t
 ##############################
 
 def twoNumberSum(array, targetSum):
-    # Write your code here.
     length = len(array)
     for i in range(0, length):
         for j in range(0, length-1):
@@ -40,7 +39,6 @@ def twoNumberSum(array, targetSum):
 ##############################
 
 def twoNumberSum(array, targetSum):
-    # Write your code here.
     nums = {}
     for num in array:
         potentialMatch = targetSum - num
@@ -65,7 +63,6 @@ def twoNumberSum(array, targetSum):
 ##############################
 
 def twoNumberSum(array, targetSum):
-    # Write your code here.
     array.sort()
     left = 0
     right = len(array)-1

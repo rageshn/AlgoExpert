@@ -19,7 +19,6 @@ Given two non-empty array of integers, write a function that determines whether 
 #############################
 
 def isValidSubsequence(array, sequence):
-    # Write your code here.
     if len(array) == 1 and len(sequence) == 1:
         if sequence[0] == array[0]:
             return True
@@ -54,7 +53,6 @@ def isValidSubsequence(array, sequence):
 ############################
 
 def isValidSubsequence(array, sequence):
-    # Write your code here.
     arrIdx = 0
     seqIdx = 0
     while arrIdx < len(array) and seqIdx < len(sequence):
@@ -76,7 +74,6 @@ def isValidSubsequence(array, sequence):
 ############################
 
 def isValidSubsequence(array, sequence):
-    # Write your code here.
     seqIdx = 0
     for value in array:
         if seqIdx == len(sequence):
