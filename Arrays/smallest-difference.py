@@ -20,7 +20,6 @@ Assume that there will only be one pair of numbers with the smallest difference.
 
 
 def smallestDifference(arrayOne, arrayTwo):
-    # Write your code here.
     least = 1000
     small_diff = []
     for first in arrayOne:
@@ -51,7 +50,6 @@ def smallestDifference(arrayOne, arrayTwo):
 
 
 def smallestDifference(arrayOne, arrayTwo):
-    # Write your code here.
 
     # -1, 3, 5, 10, 20, 28,
     # 15 17 26 134, 135
@@ -103,7 +101,6 @@ def smallestDifference(arrayOne, arrayTwo):
 
 
 def smallestDifference(arrayOne, arrayTwo):
-    # Write your code here.
     arrayOne.sort()
     arrayTwo.sort()
 
