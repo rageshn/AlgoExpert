@@ -29,7 +29,8 @@
 #   Initialize is_balanced = False
 #   If balance status for both left and right subtree are True and absolute difference between their heights are <= 1
 #       Set is_balanced = True
-#   return [is_balanced, maximum height between left and right subtree + 1]
+#   Set height as maximum of left and right subtree heights + 1
+#   return [is_balanced, height]
 ###########################
 
 
@@ -59,5 +60,7 @@ def get_height_balance(node):
     if (left_subtree_height_balance[0] and right_subtree_height_balance[0]) and (abs(left_subtree_height_balance[1] - right_subtree_height_balance[1]) <= 1):
         is_balanced = True
 
-    return [is_balanced, max(left_subtree_height_balance[1], right_subtree_height_balance[1]) + 1]
+    height = max(left_subtree_height_balance[1], right_subtree_height_balance[1]) + 1
+    
+    return [is_balanced, height]
 
