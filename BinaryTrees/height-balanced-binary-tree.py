@@ -61,6 +61,6 @@ def get_height_balance(node):
         is_balanced = True
 
     height = max(left_subtree_height_balance[1], right_subtree_height_balance[1]) + 1
-    
+
     return [is_balanced, height]
 
