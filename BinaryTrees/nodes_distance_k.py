@@ -114,3 +114,91 @@ def bfs(queue, visited, parent_map, node, node_level, k):
                 queue.append((parent_node, node_distance + 1))
 
     return result
+
+
+# Using Depth First Search
+###########################
+# Time: O(n) | Space: O(n)
+###########################
+# Rather than starting at target node, this approach starts at root node and perform a regular DFS.
+# This approach doesn't require to find the target node before the process.
+# Recursive bases cases are the below:
+#   If node = target node
+#       Look in the subtree rooted at target node, and find all nodes located at distance K from this node.
+#   If the target node is in the left subtree of the current node
+#       We must check in the right subtree of the current node that is K - L distance away.
+#   If the target node is in the right subtree of the current node
+#       We must check in the left subtree of the current node that is K - L distance away.
+#   If the target node is not in either left or right subtree of the current node
+#       Stop the recursion
+#
+#          1
+#        /   \
+#       2      3 (target)
+#     /  \       \
+#   4     5       6
+#               /   \
+#              7     8
+# Sample logic:
+#   dfs(1)
+#       left = dfs(2) (-1) --> Unable to find the target node in subtrees under (2)
+#       right = dfs(3) (1) --> Target node (3) is 1 [L] distance away from (1).
+#                              So we have to find all nodes in the left subtree under (1) that are K - L distance away.
+#   dfs(2)
+#       left = dfs(4) (-1)
+#       right = dfs(5) (-1)
+#   dfs(3)
+#       right = dfs(6)
+#   dfs(6)
+#       left = dfs(7)
+#       right = dfs(8)
+
+
+class BinaryTree:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def findNodesDistanceK(tree, target, k):
+    # Write your code here.
+    nodesDistanceK = []
+    findDistanceFromNodeToTarget(tree, target, k, nodesDistanceK)
+    return nodesDistanceK
+
+
+def findDistanceFromNodeToTarget(node, target, k, nodesDistanceK):
+    if node is None:
+        return -1
+
+    if node.value == target:
+        addSubtreeNodesAtDistanceK(node, 0, k, nodesDistanceK)
+        return 1
+
+    leftDistance = findDistanceFromNodeToTarget(node.left, target, k, nodesDistanceK)
+    rightDistance = findDistanceFromNodeToTarget(node.right, target, k, nodesDistanceK)
+
+    if leftDistance == k or rightDistance == k:
+        nodesDistanceK.append(node.value)
+
+    if leftDistance != -1:
+        addSubtreeNodesAtDistanceK(node.right, leftDistance + 1, k, nodesDistanceK)
+        return leftDistance + 1
+
+    if rightDistance != -1:
+        addSubtreeNodesAtDistanceK(node.left, rightDistance + 1, k, nodesDistanceK)
+        return rightDistance + 1
+
+    return -1
+
+
+def addSubtreeNodesAtDistanceK(node, distance, k, nodesDistanceK):
+    if node is None:
+        return
+
+    if distance == k:
+        nodesDistanceK.append(node.value)
+    else:
+        addSubtreeNodesAtDistanceK(node.left, distance + 1, k, nodesDistanceK)
+        addSubtreeNodesAtDistanceK(node.right, distance + 1, k, nodesDistanceK)
