@@ -52,7 +52,12 @@ def generate_powersets(index, array, current_subset, subsets):
 # Iterative approach
 # Time: O(n * 2^n) | Space: O(n * 2^n)
 ######################################
-#
+# Initialize subsets = empty list which holds a empty list
+# Loop through every element in array
+#   Loop through the index of subsets till the end
+#       Set current_subset = subsets[i]
+#       Append current_subset + [element] to subsets list
+# return subsets
 ######################################
 
 
